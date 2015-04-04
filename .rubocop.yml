@@ -1,0 +1,22 @@
+AllCops:
+
+  Exclude:
+    - bin/*
+    - vendor/**/*
+    - lib/tasks/cucumber.rake
+    - script/cucumber
+    - node_modules/**/*
+    - db/schema.rb
+    - db/migrate/*
+    - Gemfile
+    - Guardfile
+    - Gemfile.lock
+
+Documentation:
+  Enabled: false
+
+LineLength:
+  Max: 103
+
+TrailingComma:
+  Enabled: false
