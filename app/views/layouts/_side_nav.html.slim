@@ -1,0 +1,32 @@
+nav.navbar-default.navbar-side[role="navigation"]
+  .sidebar-collapse
+    ul#main-menu.nav
+    - if current_user.present?
+      li
+        a[href="/"]
+          i.fa.fa-dashboard.fa-3x
+          |  Dashboard
+      li
+        a[href="/"]
+          i.fa.fa-desktop.fa-3x
+          |  UI Elements
+      li
+        a[href="/"]
+          i.fa.fa-qrcode.fa-3x
+          |  Tabs & Panels
+      li
+        a[href="/"]
+          i.fa.fa-bar-chart-o.fa-3x
+          |  Morris Charts
+      li
+        a[href="/"]
+          i.fa.fa-table.fa-3x
+          |  Table Examples
+      li
+        a[href="/"]
+          i.fa.fa-edit.fa-3x
+          |  Forms 
+      li
+        a[href="/"]
+          i.fa.fa-square-o.fa-3x
+          |  Blank Page

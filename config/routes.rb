@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  authenticated do
+    root to: 'dashboard#index', as: :authenticated
+  end
+  root to: 'pages#index', as: :root
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,33 @@
+.row
+  .col-md-12
+    .jumbotron
+      h1 PickyPlanner
+      p
+       | A meal planning system to help you track what foods you have.
+         Enter in what you want to eat, and use PickyPlanner to find
+         what meals you want. Keep track of your food intake as well as
+         your pantry.
+
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        |  User Account
+      .panel-body
+        ul.nav.nav-tabs
+          li.active
+            a[href="#sign-in" data-toggle="tab"]
+              | Sign In
+          li
+            a[href="#sign-up" data-toggle="tab"]
+              | Create Account
+          li
+            a[href="#forgot-password" data-toggle="tab"]
+              | Forgot Password
+        .tab-content
+          #sign-in.tab-pane.fade.active.in
+            = render template: 'devise/sessions/new'
+          #sign-up.tab-pane.fade
+            = render template: 'devise/registrations/new'
+          #forgot-password.tab-pane.fade
+            = render template: 'devise/passwords/new'

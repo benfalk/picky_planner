@@ -11,6 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+$(function(){
+  // Collapse the side menu when size is to small
+  $(window).bind("load resize", function () {
+    if ($(this).width() < 768) {
+      $('div.sidebar-collapse').addClass('collapse')
+    } else {
+      $('div.sidebar-collapse').removeClass('collapse')
+    }
+  });
+});
