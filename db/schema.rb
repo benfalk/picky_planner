@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407023720) do
+ActiveRecord::Schema.define(version: 20150409014141) do
+
+  create_table "foods", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "calories"
+    t.integer  "protein"
+    t.integer  "carbohydrates"
+    t.integer  "fats"
+    t.integer  "fiber"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "meal_items", force: :cascade do |t|
+    t.integer  "meal_id"
+    t.integer  "food_id"
+    t.float    "servings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "meals", force: :cascade do |t|
     t.datetime "consumed_at"
