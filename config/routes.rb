@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   authenticated do
     root to: 'dashboard#index', as: :authenticated
+    resources :foods
   end
   root to: 'pages#index', as: :root
   # The priority is based upon order of creation: first created -> highest priority.

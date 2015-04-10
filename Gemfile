@@ -13,6 +13,9 @@ gem 'kaminari'
 # Slim templates [http://slim-lang.com/]
 gem 'slim-rails'
 
+# Build tables quick and easy in the view
+gem 'table_cloth'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
