@@ -11,6 +11,24 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
   end
 
+  def update
+    @food = Food.find(params[:id])
+    if @food.update(food_params)
+      redirect_to foods_url
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @food = Food.find(params[:id])
+    if @food.destroy
+      redirect_to foods_url
+    else
+      render :edit
+    end
+  end
+
   def create
     @food = Food.new(food_params)
     if @food.save

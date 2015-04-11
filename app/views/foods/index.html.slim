@@ -5,3 +5,7 @@
   = food.column :carbohydrates
   = food.column :fats
   = food.column :fiber
+  = food.actions do
+    - action { |food| link_to 'Edit', edit_food_path(food), class: 'btn' }
+
+= link_to 'Add Food', new_food_path, class: 'btn'
