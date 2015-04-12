@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :meals, foreign_key: :consumed_by
+  has_many :user_foods
+  has_many :foods, through: :user_foods
 end
