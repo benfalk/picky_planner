@@ -1,6 +1,8 @@
 class FoodsController < ApplicationController
+  delegate :foods, to: :current_user
+
   def index
-    @foods = Food.page(params[:page])
+    @foods = foods.page(params[:page])
   end
 
   def new
@@ -8,11 +10,11 @@ class FoodsController < ApplicationController
   end
 
   def edit
-    @food = Food.find(params[:id])
+    @food = foods.find(params[:id])
   end
 
   def update
-    @food = Food.find(params[:id])
+    @food = foods.find(params[:id])
     if @food.update(food_params)
       redirect_to foods_url
     else
@@ -21,7 +23,7 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-    @food = Food.find(params[:id])
+    @food = foods.find(params[:id])
     if @food.destroy
       redirect_to foods_url
     else
@@ -30,8 +32,9 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = current_user.foods.new(food_params)
+    @food = Food.new(food_params)
     if @food.save
+      current_user.foods << @food
       redirect_to foods_url
     else
       render :edit
