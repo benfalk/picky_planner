@@ -1,0 +1,7 @@
+= simple_table_for @meals do |meal|
+  = meal.column :consumed_at
+  = meal.column :calories
+  = meal.actions do
+    - action { |meal| link_to 'Edit', edit_meal_path(meal), class: 'btn' }
+
+= link_to 'Add Meal', new_meal_path, class: 'btn'

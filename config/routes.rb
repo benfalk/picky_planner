@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   authenticated do
     root to: 'dashboard#index', as: :authenticated
     resources :foods
+    resources :meals
   end
   root to: 'pages#index', as: :root
   # The priority is based upon order of creation: first created -> highest priority.
