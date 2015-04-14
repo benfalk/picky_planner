@@ -47,6 +47,7 @@ class FoodsController < ApplicationController
     params.require(:food).permit(
       :name,
       :calories,
+      :serving_size,
       :protein,
       :carbohydrates,
       :fats,
