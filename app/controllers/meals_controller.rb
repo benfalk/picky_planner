@@ -6,7 +6,7 @@ class MealsController < ApplicationController
   end
 
   def new
-    @meal = Meal.new
+    @meal = meals.new
   end
 
   def edit
@@ -23,9 +23,8 @@ class MealsController < ApplicationController
   end
 
   def create
-    @meal = Meal.new(meal_params)
+    @meal = meals.new(meal_params)
     if @meal.save
-      current_user.meals << @meal
       redirect_to meals_url
     else
       render :edit
