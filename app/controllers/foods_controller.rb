@@ -22,6 +22,13 @@ class FoodsController < ApplicationController
     end
   end
 
+  def search
+    results = current_user.foods.search(params[:q])
+    respond_to do |format|
+      format.json { render json: results }
+    end
+  end
+
   def destroy
     @food = foods.find(params[:id])
     if @food.destroy
