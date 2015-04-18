@@ -15,3 +15,7 @@ Then(/^the test user should have a food named "(.*?)"$/) do |arg1|
   @food = @user.reload.foods.find_by(name: arg1)
   expect(@food).to_not be_nil
 end
+
+Given(/^I have a food named "(.*?)"$/) do |_arg1|
+  pending # express the regexp above with the code you wish you had
+end
