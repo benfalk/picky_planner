@@ -10,10 +10,11 @@ Feature: Doing CRUD with Meals
     And click the "Create Meal" button
     Then the test user should have a meal with "600" calories
   
+  @javascript @wip
   Scenario: A user can add food to meals
     Given I have a food named "meat and gravy"
     When I visit "/meals/new"
-    And click the "Add food" button
+    And click the "Add Food" link
     And put "meat" in the "meal_items[][food_search]" field
     And click the "Ok" button
     And click the "Create Meal" button

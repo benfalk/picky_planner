@@ -4,6 +4,8 @@ ruby '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
+gem 'bundler', '>= 1.8.4'
+
 # User Authentication
 gem 'devise'
 
@@ -15,6 +17,13 @@ gem 'slim-rails'
 
 # Build tables quick and easy in the view
 gem 'table_cloth'
+
+# Lib to easily allow creating dynamic many-to-one form fields
+gem 'nested_form'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-select2'
+end
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -72,6 +81,7 @@ end
 
 group :test do
   gem 'cucumber-rails', require: false
+  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'

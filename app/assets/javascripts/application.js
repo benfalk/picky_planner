@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require select2
+//= require jquery_nested_form
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks

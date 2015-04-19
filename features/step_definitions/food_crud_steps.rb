@@ -16,6 +16,7 @@ Then(/^the test user should have a food named "(.*?)"$/) do |arg1|
   expect(@food).to_not be_nil
 end
 
-Given(/^I have a food named "(.*?)"$/) do |_arg1|
-  pending # express the regexp above with the code you wish you had
+Given(/^I have a food named "(.*?)"$/) do |food_name|
+  @my_food = FactoryGirl.create :food, name: food_name
+  @user.foods << @my_food
 end
