@@ -25,4 +25,33 @@ $(function(){
       $('div.sidebar-collapse').removeClass('collapse')
     }
   });
+
+  // Hook up select2 for each new food added to a meal
+  $(document).on('nested:fieldAdded:meal_items', function(event){
+    //console.log(event.field);
+    var field = event.field.find('.meal-item.food-name');
+    field.select2({
+      minimumInputLength: 3,
+      ajax: {
+        url: '/foods/search.json',
+        dataType: 'json',
+        delay: 200,
+        data: function(params){
+          return {
+            q: params
+          }
+        },
+        results: function(data) {
+          var results = []
+          $.each(data, function(idx, item){
+            results.push({ id: item.id, text: item.name });
+          });
+          return { 
+            results: results
+          }
+        }
+      }
+    });
+    field.css({width: '80%'});
+  });
 });

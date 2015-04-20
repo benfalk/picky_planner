@@ -20,7 +20,10 @@ module PickyPlanner
     end
 
     def scoped_ids
-      @scoped_ids ||= food_scope.where(id: all_food_ids).pluck(:id)
+      @scoped_ids ||= food_scope
+                      .where(id: all_food_ids)
+                      .pluck(:id)
+                      .map(&:to_s)
     end
   end
 end

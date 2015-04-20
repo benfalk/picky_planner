@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   delegate :meals, to: :current_user
+  before_filter :filter_meal_attributes!, only: [:update, :create]
 
   def index
     @meals = meals.page(params[:page])
@@ -36,7 +37,26 @@ class MealsController < ApplicationController
   def meal_params
     params.require(:meal).permit(
       :consumed_at,
-      :calories
+      :calories,
+      meal_items_attributes: [:id, :servings, :_destroy, :food_id]
     )
+  end
+
+  def filter_meal_attributes!
+    params[:meal][:meal_items_attributes] = filtered_meal_item_attributes
+  end
+
+  def filtered_meal_item_attributes
+    filter.new(food_scope: current_user.foods, attributes: meal_items_attributes).call
+  end
+
+  def meal_items_attributes
+    return {} unless params[:meal].is_a? Hash
+    return {} unless params[:meal][:meal_items_attributes].is_a? Hash
+    params[:meal][:meal_items_attributes]
+  end
+
+  def filter
+    PickyPlanner::MealItemFilter
   end
 end

@@ -2,6 +2,7 @@
   = m.input :calories
   = m.input :consumed_at
   = m.fields_for :meal_items do |item|
+    = item.input :food_id, input_html: { class: 'meal-item food-name' }
     = item.input :servings
     = item.link_to_remove 'Remove Food', class: 'btn'
   = m.link_to_add 'Add Food', :meal_items
