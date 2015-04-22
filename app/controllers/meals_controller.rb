@@ -3,19 +3,19 @@ class MealsController < ApplicationController
   before_filter :filter_meal_attributes!, only: [:update, :create]
 
   def index
-    @meals = meals.page(params[:page])
+    @meals = meals_scope.page(params[:page])
   end
 
   def new
-    @meal = meals.new
+    @meal = meals_scope.new
   end
 
   def edit
-    @meal = meals.find(params[:id])
+    @meal = meals_scope.find(params[:id])
   end
 
   def update
-    @meal = meals.find(params[:id])
+    @meal = meals_scope.find(params[:id])
     if @meal.update(meal_params)
       redirect_to meals_url
     else
@@ -24,7 +24,7 @@ class MealsController < ApplicationController
   end
 
   def create
-    @meal = meals.new(meal_params)
+    @meal = meals_scope.new(meal_params)
     if @meal.save
       redirect_to meals_url
     else
@@ -33,6 +33,10 @@ class MealsController < ApplicationController
   end
 
   private
+
+  def meals_scope
+    meals.includes(meal_items: [:food])
+  end
 
   def meal_params
     params.require(:meal).permit(

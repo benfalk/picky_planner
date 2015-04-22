@@ -1,3 +1,37 @@
+javascript:
+  var Foods = []
+  $.each(#{@meal.foods.to_json.html_safe}, function(idx, item){
+    Foods.push({ id: item.id, text: item.name });
+  });
+  $(function(){
+    $(".meal-item.food-name").select2({
+      minimumInputLength: 3,
+      initSelection: function(element, callback){
+        var results = $(Foods).filter(function(idx, food){ return element.val() == food.id });
+        callback(results[0]);
+      },
+      ajax: {
+        url: '/foods/search.json',
+        dataType: 'json',
+        delay: 200,
+        data: function(params){
+          return {
+            q: params
+          }
+        },
+        results: function(data) {
+          var results = []
+          $.each(data, function(idx, item){
+            results.push({ id: item.id, text: item.name });
+          });
+          return { 
+            results: results
+          }
+        }
+      }
+    });
+  });
+
 = simple_nested_form_for @meal do |m|
   = m.input :calories
   = m.input :consumed_at
