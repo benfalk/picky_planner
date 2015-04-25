@@ -26,7 +26,7 @@ nav.navbar-default.navbar-side[role="navigation"]
           /a[href="/"]
             /i.fa.fa-edit.fa-3x
             /|  Forms 
-        /li
-          /a[href="/"]
-            /i.fa.fa-square-o.fa-3x
-            /|  Blank Page
+        li
+          = link_to destroy_user_session_path, method: :delete do
+            i.fa.fa-sign-out.fa-3x
+            |  Sign Out
