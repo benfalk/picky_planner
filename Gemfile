@@ -24,6 +24,7 @@ gem 'nested_form'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-select2'
+  gem 'rails-assets-select2-bootstrap-css'
 end
 
 gem 'momentjs-rails', '>= 2.8.1'
