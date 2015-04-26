@@ -7,6 +7,8 @@
   = food.column :fats
   = food.column :fiber
   = food.actions do
-    - action { |food| link_to 'Edit', edit_food_path(food), class: 'btn' }
+    - action do |food|
+      - link_to edit_food_path(food), class: 'btn btn-info' do
+        i.fa.fa-pencil.fa-1x
 
-= link_to 'Add Food', new_food_path, class: 'btn'
+= link_to 'Add Food', new_food_path, class: 'btn btn-primary'
