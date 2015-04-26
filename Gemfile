@@ -26,6 +26,10 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-select2'
 end
 
+gem 'momentjs-rails', '>= 2.8.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
+gem 'chronic'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

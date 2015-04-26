@@ -14,6 +14,8 @@
 //= require select2
 //= require jquery_nested_form
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
 //= require jquery_ujs
 //= require turbolinks
 $(function(){

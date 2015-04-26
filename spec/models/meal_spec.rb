@@ -15,4 +15,21 @@ RSpec.describe Meal, type: :model do
     its(:count) { is_expected.to eq(1) }
     it { is_expected.to include(food) }
   end
+
+  describe '#consumed_at=' do
+    let(:string_time) { '01/01/2001 11:00 AM' }
+    subject { meal.consumed_at = string_time }
+    before { expect(Chronic).to receive(:parse).with(string_time) }
+    it { is_expected.to eq(string_time) }
+  end
+
+  describe '#consumd_at_string' do
+    context 'with a non-nil datetime' do
+      let(:datetime) { Chronic.parse '01/01/2001 11:00 AM' }
+      let(:meal) { FactoryGirl.create :meal, consumed_at: datetime }
+      subject { meal.consumed_at_string }
+
+      it { is_expected.to eq '01/01/2001 11:00 AM' }
+    end
+  end
 end

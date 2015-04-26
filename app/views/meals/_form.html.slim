@@ -4,6 +4,7 @@ javascript:
     Foods.push({ id: item.id, text: item.name });
   });
   $(function(){
+    $("#meal_consumed_at").datetimepicker();
     $(".meal-item.food-name").select2({
       minimumInputLength: 3,
       initSelection: function(element, callback){
@@ -33,11 +34,23 @@ javascript:
   });
 
 = simple_nested_form_for @meal do |m|
-  = m.input :calories
-  = m.input :consumed_at
-  = m.fields_for :meal_items do |item|
-    = item.input :food_id, input_html: { class: 'meal-item food-name' }
-    = item.input :servings
-    = item.link_to_remove 'Remove Food', class: 'btn'
-  = m.link_to_add 'Add Food', :meal_items
-  = m.button :submit
+  .row
+    .col-sm-6
+      = m.input :calories
+    .col-sm-6
+      = m.input :consumed_at, as: :string, input_html: { value: m.object.consumed_at_string }
+    = m.fields_for :meal_items do |item|
+      .col-sm-8
+        = item.input :food_id, input_html: { class: 'meal-item food-name' }
+      .col-sm-2
+        = item.input :servings
+      .col-sm-2
+        .input.form-group
+          label.float &nbsp;
+          = item.link_to_remove 'Remove', class: 'btn btn-danger form-control'
+    .col-sm-12
+      .form-group
+        = m.link_to_add 'Add Food', :meal_items, class: 'btn btn-primary'
+  .row
+    .col-sm-12
+      = m.button :submit
